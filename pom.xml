@@ -60,11 +60,14 @@
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.6.0</version>
                 <configuration>
-                    <minimizeJar>true</minimizeJar>
                     <relocations>
                         <relocation>
                             <pattern>org.bstats</pattern>
                             <shadedPattern>io.github.sefiraat.networks.bstats</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>com.tcoded.folialib</pattern>
+                            <shadedPattern>io.github.sefiraat.networks.folialib</shadedPattern>
                         </relocation>
                     </relocations>
                     <filters>
@@ -134,7 +137,7 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.SlimefunGuguProject</groupId>
+            <groupId>top.craft233</groupId>
             <artifactId>Slimefun4</artifactId>
             <version>b39097e015</version>
             <scope>provided</scope>
@@ -143,6 +146,12 @@
             <groupId>dev.sefiraat</groupId>
             <artifactId>SefiLib</artifactId>
             <version>0.2.6</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.technicallycoded</groupId>
+            <artifactId>FoliaLib</artifactId>
+            <version>0.4.3</version>
             <scope>compile</scope>
         </dependency>
 
@@ -221,7 +230,7 @@
 
         <!-- 汉化库 -->
         <dependency>
-            <groupId>net.guizhanss</groupId>
+            <groupId>top.craft233</groupId>
             <artifactId>GuizhanLibPlugin</artifactId>
             <version>1.7.6</version>
             <scope>provided</scope>

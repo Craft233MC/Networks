@@ -10,7 +10,6 @@ import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import javax.annotation.Nonnull;
 import java.util.EnumSet;
@@ -125,16 +124,11 @@ public class NetworkNode {
         var sfItem = StorageCacheUtils.getSfItem(location);
         if (sfItem != null) {
             Slimefun.getDatabaseManager().getBlockDataController().removeBlock(location);
-            BukkitRunnable runnable = new BukkitRunnable() {
-                @Override
-                public void run() {
-                    //fix #99
-                    NetworkController.wipeNetwork(location);
-                    location.getWorld().dropItemNaturally(location, sfItem.getItem());
-                    location.getBlock().setType(Material.AIR);
-                }
-            };
-            runnable.runTask(Networks.getInstance());
+            Networks.getFoliaLib().getScheduler().runNextTick(wrappedTask -> {
+                NetworkController.wipeNetwork(location);
+                location.getWorld().dropItemNaturally(location, sfItem.getItem());
+                location.getBlock().setType(Material.AIR);
+            });
             NetworkController.wipeNetwork(location);
         }
     }

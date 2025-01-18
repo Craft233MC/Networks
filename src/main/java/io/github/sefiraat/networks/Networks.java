@@ -1,5 +1,6 @@
 package io.github.sefiraat.networks;
 
+import com.tcoded.folialib.FoliaLib;
 import io.github.sefiraat.networks.commands.NetworksMain;
 import io.github.sefiraat.networks.managers.ListenerManager;
 import io.github.sefiraat.networks.managers.SupportedPluginManager;
@@ -8,8 +9,6 @@ import io.github.sefiraat.networks.integrations.NetheoPlants;
 import io.github.sefiraat.networks.slimefun.NetworkSlimefunItems;
 import io.github.sefiraat.networks.slimefun.network.NetworkController;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
-import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
-import net.guizhanss.guizhanlibplugin.updater.GuizhanUpdater;
 import net.guizhanss.slimefun4.utils.WikiUtils;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.AdvancedPie;
@@ -35,6 +34,8 @@ public class Networks extends JavaPlugin implements SlimefunAddon {
     private ListenerManager listenerManager;
     private SupportedPluginManager supportedPluginManager;
 
+    private static FoliaLib foliaLib;
+
     public Networks() {
         this.username = "SlimefunGuguProject";
         this.repo = "Networks";
@@ -44,6 +45,7 @@ public class Networks extends JavaPlugin implements SlimefunAddon {
     @Override
     public void onEnable() {
         instance = this;
+        foliaLib = new FoliaLib(this);
 
         if (!getServer().getPluginManager().isPluginEnabled("GuizhanLibPlugin")) {
             getLogger().log(Level.SEVERE, "本插件需要 鬼斩前置库插件(GuizhanLibPlugin) 才能运行!");
@@ -58,7 +60,6 @@ public class Networks extends JavaPlugin implements SlimefunAddon {
         getLogger().info("########################################");
 
         saveDefaultConfig();
-        tryUpdate();
 
         this.supportedPluginManager = new SupportedPluginManager();
 
@@ -68,12 +69,6 @@ public class Networks extends JavaPlugin implements SlimefunAddon {
         this.getCommand("networks").setExecutor(new NetworksMain());
 
         setupMetrics();
-    }
-
-    public void tryUpdate() {
-        if (getConfig().getBoolean("auto-update") && getDescription().getVersion().startsWith("Build")) {
-            GuizhanUpdater.start(this, getFile(), username, repo, branch);
-        }
     }
 
     public void setupSlimefun() {
@@ -139,5 +134,9 @@ public class Networks extends JavaPlugin implements SlimefunAddon {
 
     public static ListenerManager getListenerManager() {
         return Networks.getInstance().listenerManager;
+    }
+
+    public static FoliaLib getFoliaLib() {
+        return foliaLib;
     }
 }

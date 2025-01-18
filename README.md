@@ -4,6 +4,18 @@
 
 ![](https://cdn.jsdelivr.net/gh/SlimefunGuguProject/Networks@master/images/wiki/setup.png)
 
+## 构建
+
+你需要手动构建并使用本仓库内的`slimefun.jar`和`guizhanlibplugin.jar`
+
+初始化本地仓库
+```
+mvn install:install-file -Dfile=lib/slimefun.jar -DgroupId=top.craft233 -DartifactId=Slimefun4 -Dversion=b39097e015 -Dpackaging=jar
+mvn install:install-file -Dfile=lib/guizhanlibplugin.jar -DgroupId=top.craft233 -DartifactId=GuizhanLibPlugin -Dversion=1.7.6 -Dpackaging=jar
+
+mvn clean install
+```
+
 ## 下载
 
 [![构建状态](https://builds.guizhanss.com/api/badge/SlimefunGuguProject/Networks/master/latest)](https://builds.guizhanss.com/SlimefunGuguProject/Networks/master)

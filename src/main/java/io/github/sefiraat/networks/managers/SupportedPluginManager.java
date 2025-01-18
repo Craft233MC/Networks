@@ -24,10 +24,7 @@ public class SupportedPluginManager {
         this.infinityExpansion = Bukkit.getPluginManager().isPluginEnabled("InfinityExpansion");
         this.netheopoiesis = Bukkit.getPluginManager().isPluginEnabled("Netheopoiesis");
         this.slimeHud = Bukkit.getPluginManager().isPluginEnabled("SlimeHUD");
-        Networks.getInstance()
-            .getServer()
-            .getScheduler()
-            .runTaskLater(Networks.getInstance(), this::firstTickRegistrations, 1);
+        Networks.getFoliaLib().getScheduler().runLater(this::firstTickRegistrations, 1);
     }
 
     private void firstTickRegistrations() {

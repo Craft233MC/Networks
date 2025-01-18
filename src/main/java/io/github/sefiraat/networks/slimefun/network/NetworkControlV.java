@@ -138,7 +138,7 @@ public class NetworkControlV extends NetworkDirectional {
         }
 
         this.blockCache.add(targetPosition);
-        Bukkit.getScheduler().runTask(Networks.getInstance(), bukkitTask -> {
+        Networks.getFoliaLib().getScheduler().runNextTick(WrappedTask -> {
             targetBlock.setType(fetchedStack.getType(), true);
             if (SupportedPluginManager.getInstance().isMcMMO()) {
                 mcMMO.getPlaceStore().setTrue(targetBlock);
