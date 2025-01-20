@@ -138,7 +138,7 @@ public class NetworkControlV extends NetworkDirectional {
         }
 
         this.blockCache.add(targetPosition);
-        Networks.getFoliaLib().getScheduler().runNextTick(WrappedTask -> {
+        Networks.getFoliaLib().getScheduler().runAtLocation(targetBlock.getLocation(),WrappedTask -> {
             targetBlock.setType(fetchedStack.getType(), true);
             if (SupportedPluginManager.getInstance().isMcMMO()) {
                 mcMMO.getPlaceStore().setTrue(targetBlock);

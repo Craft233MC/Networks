@@ -129,7 +129,7 @@ public class NetworkControlX extends NetworkDirectional {
         final UUID uuid = UUID.fromString(StorageCacheUtils.getData(blockMenu.getLocation(), OWNER_KEY));
         final OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(uuid);
 
-        Networks.getFoliaLib().getScheduler().runNextTick( WrappedTask -> {
+        Networks.getFoliaLib().getScheduler().runAtLocation(targetBlock.getLocation(), WrappedTask -> {
             if (!Slimefun.getProtectionManager().hasPermission(offlinePlayer, targetBlock, Interaction.BREAK_BLOCK)) {
                 return;
             }

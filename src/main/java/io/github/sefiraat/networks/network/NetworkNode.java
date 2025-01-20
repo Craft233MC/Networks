@@ -124,7 +124,7 @@ public class NetworkNode {
         var sfItem = StorageCacheUtils.getSfItem(location);
         if (sfItem != null) {
             Slimefun.getDatabaseManager().getBlockDataController().removeBlock(location);
-            Networks.getFoliaLib().getScheduler().runNextTick(wrappedTask -> {
+            Networks.getFoliaLib().getScheduler().runAtLocation(location,wrappedTask -> {
                 NetworkController.wipeNetwork(location);
                 location.getWorld().dropItemNaturally(location, sfItem.getItem());
                 location.getBlock().setType(Material.AIR);
