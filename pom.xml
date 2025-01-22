@@ -139,7 +139,7 @@
         <dependency>
             <groupId>top.craft233</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>b39097e015</version>
+            <version>2024.3.1</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
