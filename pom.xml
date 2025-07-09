@@ -126,6 +126,10 @@
             <id>bg-repo</id>
             <url>https://repo.bg-software.com/repository/api/</url>
         </repository>
+        <repository>
+            <id>tcoded-releases</id>
+            <url>https://repo.tcoded.com/releases</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -149,9 +153,9 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.technicallycoded</groupId>
+            <groupId>com.tcoded</groupId>
             <artifactId>FoliaLib</artifactId>
-            <version>0.4.3</version>
+            <version>0.5.1</version>
             <scope>compile</scope>
         </dependency>
 
